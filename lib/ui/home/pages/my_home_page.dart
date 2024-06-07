@@ -37,7 +37,7 @@ class _MyHomePageState extends State<MyHomePage> implements UiLibraryInterface {
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Theme.of(context).colorScheme.inversePrimary,
-        title: const Text('Biblioteca Antioquia'),
+        title: const Text('Librería Antioquia'),
       ),
       body: Column(
         mainAxisAlignment: MainAxisAlignment.start,
