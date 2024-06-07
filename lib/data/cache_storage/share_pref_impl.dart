@@ -28,11 +28,21 @@ class SharePrefImpl extends CacheStorageInterface {
 
   @override
   Future<void> setObject(String key, Map<String, dynamic> value) async {
-    _prefs.setString(key, json.encode(value));
+    await _prefs.setString(key, json.encode(value));
   }
 
   @override
   Future<void> setString(String key, String value) async {
-    _prefs.setString(key, value);
+    await _prefs.setString(key, value);
+  }
+
+  @override
+  Future<List<String>> getListString(String key) async {
+    return _prefs.getStringList(key) ?? [];
+  }
+
+  @override
+  Future<void> setListString(String key, List<String> value) async {
+    await _prefs.setStringList(key, value);
   }
 }

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:libreria_antioquia/config/main_config.dart';
 import 'package:libreria_antioquia/infraestructure/helpers/load_env_helper.dart';
 import 'package:libreria_antioquia/setup.dart';
 import 'package:libreria_antioquia/domain/provider/library_provider.dart';
@@ -14,6 +15,7 @@ Future<void> initApp() async {
   final List<SingleChildWidget> items = [
     ChangeNotifierProvider(create: (_) => LibraryProvider()),
   ];
+  await MainConfig.cacheStorage.init();
   WidgetsFlutterBinding.ensureInitialized();
 
   final configuredApp = await Setup.getApp(providers: items);

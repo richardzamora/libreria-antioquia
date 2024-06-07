@@ -8,10 +8,16 @@ class HomePresenter {
 
   Future<void> searchBooks(String search) async {
     _interface.showLoading();
-    _config.bookGateway.searchBooks(search);
+
+    _config.bookGateway.searchBooks(search).then((value) {
+      _interface.hideLoading();
+    });
   }
 
-  showBookDetail(String? isbn) {
-    _config.bookGateway.showBookDetail(isbn);
+  Future<void> showBookDetail(String? isbn) async {
+    _interface.showLoading();
+    _config.bookGateway.showBookDetail(isbn).then((value) {
+      _interface.hideLoading();
+    });
   }
 }

@@ -6,4 +6,6 @@ abstract class CacheStorageInterface {
   Future<void> setString(String key, String value);
   Future<Map<String, dynamic>> getObject(String key);
   Future<void> setObject(String key, Map<String, dynamic> value);
+  Future<List<String>> getListString(String key);
+  Future<void> setListString(String key, List<String> value);
 }

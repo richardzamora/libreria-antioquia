@@ -2,5 +2,5 @@ import 'package:libreria_antioquia/data/cache_storage/cache_storage_interface.da
 import 'package:libreria_antioquia/data/cache_storage/share_pref_impl.dart';
 
 class MainConfig {
-  CacheStorageInterface cacheStorage = SharePrefImpl();
+  static CacheStorageInterface cacheStorage = SharePrefImpl();
 }
