@@ -7,6 +7,7 @@ import 'infraestructure/model/book_detail_response_test.dart'
     as book_detail_response_test;
 import 'ui/routes/book_detail_routes_test.dart' as books_detail_routes_test;
 import 'ui/routes/home_routes_test.dart' as home_routes_test;
+import 'ui/widgets/searcher_widget_test.dart' as searcher_widget_test;
 
 void main() {
   group('infraestructure', () {
@@ -18,5 +19,6 @@ void main() {
   group('ui', () {
     books_detail_routes_test.main();
     home_routes_test.main();
+    searcher_widget_test.main();
   });
 }

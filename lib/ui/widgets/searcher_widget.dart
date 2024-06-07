@@ -43,6 +43,7 @@ class _SearcherWidgetState extends State<SearcherWidget> {
               children: [
                 Expanded(
                   child: TextField(
+                    key: const Key('searcher_text_field'),
                     controller: controller,
                   ),
                 ),
@@ -50,6 +51,7 @@ class _SearcherWidgetState extends State<SearcherWidget> {
                   Material(
                     color: Colors.transparent,
                     child: InkWell(
+                        key: const Key('searcher_history_button'),
                         onTap: () {
                           setState(() {
                             isShowingHistory = !isShowingHistory;
@@ -63,6 +65,7 @@ class _SearcherWidgetState extends State<SearcherWidget> {
                 Material(
                   color: Colors.transparent,
                   child: InkWell(
+                      key: const Key('searcher_search_button'),
                       onTap: () {
                         widget.onSearch(controller.text);
                       },
@@ -76,19 +79,22 @@ class _SearcherWidgetState extends State<SearcherWidget> {
             if (isShowingHistory)
               Column(
                 children: [
-                  for (String value in widget.historyData ?? [])
+                  for (int index = 0;
+                      index < (widget.historyData?.length ?? 0);
+                      index++)
                     Row(
                       children: [
                         InkWell(
-                          onTap: () => widget.onSearch(value),
-                          child: Container(
-                            child: Text(value),
-                          ),
+                          onTap: () =>
+                              widget.onSearch(widget.historyData?[index] ?? ''),
+                          child: Text(widget.historyData?[index] ?? ''),
                         ),
                         if (widget.onDeleteHistory != null)
                           InkWell(
+                              key: Key('searcher_delete_btn $index'),
                               onTap: () {
-                                widget.onDeleteHistory!(value);
+                                widget.onDeleteHistory!(
+                                    widget.historyData?[index] ?? '');
                               },
                               child: Container(
                                 margin: const EdgeInsets.all(8.0),

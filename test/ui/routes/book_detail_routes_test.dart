@@ -54,6 +54,7 @@ void main() {
 
       final findedBtn =
           find.byKey(const Key('routesButton'), skipOffstage: false).first;
+      expect(findedBtn, findsOneWidget);
       await tester.tap(findedBtn);
       await tester.pumpAndSettle(const Duration(milliseconds: 20));
     });
